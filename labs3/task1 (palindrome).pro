@@ -9,7 +9,7 @@ myReverse_help([], Res, Res).
 myReverse_help([H|T], Res, Curr) :-
     myReverse_help(T, Res, [H|Curr]).
 
-%сопоставляет
+
 equalChars(X, X).
 equalChars('a', 'A').
 equalChars('b', 'B').
@@ -18,7 +18,7 @@ equalChars('A', 'a').
 equalChars('B', 'b').
 equalChars('C', 'c').
 
-%проверяет на соотношение
+
 checkListEq([], []).
 checkListEq([H1|T1], [H2|T2]) :-
     equalChars(H1, H2),
