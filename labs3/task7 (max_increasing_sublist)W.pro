@@ -1,4 +1,4 @@
-%главная функция
+%главный предикат
 max_increasing_sublist(Lst, Seq) :- var(Seq), Lst \= [], max_growed_seq(Lst, [], Seq), take_first(Seq).
 max_increasing_sublist(Lst, Seq) :- nonvar(Seq), max_growed_seq(Lst, [], Max), length(Lst,L), length(Max, M), 
     (L = M,  is_max_growed_seq(Lst, M, Seq)
