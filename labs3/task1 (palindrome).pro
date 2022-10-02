@@ -1,4 +1,4 @@
-%главная функция
+%главный предикат
 palindrome(Lst) :-
     myReverse(Lst,Res),
     checkListEq(Lst,Res).
