@@ -1,3 +1,4 @@
+%главная функция
 myReverse(Lst, Res) :- myReverse_help(Lst, Res, []).
 
 myReverse_help([], Res, Res).
