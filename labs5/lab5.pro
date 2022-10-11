@@ -11,12 +11,15 @@ mapFunc([H1|T1],[H2|T2], Func, [H|T]) :-
  add(A,B,C) :- C is A + B. 
 
  %task2  
+ 
+ %главная функция
 choosePairs(Lst1, Lst2, Func, Lst) :- 
 	choosePairs_help(Lst1, Lst2, Func, X),
      (var(Lst) -> sort(X, Lst)
      ; 
      sort(X, Res), sort(Lst, Res) ).
 
+%фильтр программы, работающий по аналогии с map
 choosePairs_help([], [], _, []).
 choosePairs_help([H1 | T1], [H2 | T2], Func, Lst) :-
 	Term =.. [Func, H1, H2],
