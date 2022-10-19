@@ -73,4 +73,38 @@ subsets(LSet,LSubsets) :- var(LSet),
     subsets(LSet,LSubsets).
 
 subsets(LSet,LSubsets) :- var(LSet), var(LSubsets), false.
-  
+ 
+%task7
+
+%пример 
+thing(plate, 1, 1.5).
+thing(jar, 3, 5).
+thing(silverSpoon, 0.3, 15).
+sack(3). 
+
+%функции для счета цены и веса
+countPrice([], 0).
+countPrice([H | T], Price) :-
+   thing(H, _, X), countPrice(T, Sum), Price is Sum + X.
+
+countWeight([], 0).
+countWeight([H|T], Weight) :-
+   thing(H, X, _), countWeight(T, Sum), Weight is Sum + X.
+
+%главная функция
+pack(Things, MaxPrice) :-
+   findall(X, thing(X, _, _), Lst),
+   subsets(Lst, Lst_subs),
+   pack_it(Lst_subs, [], 0, Things, MaxPrice), !.
+
+pack_it([], Things, MaxPrice, Things, MaxPrice).
+pack_it([H|T], Things, Price, GoodThings, MaxPrice) :-
+   countPrice(H, X),
+   countWeight(H, Y),
+   sack(W),
+   (
+      Y =< W, 
+      X > Price -> pack_it(T, H, X, GoodThings, MaxPrice)
+      ;
+      pack_it(T, Things, Price, GoodThings, MaxPrice)).   
+ 
